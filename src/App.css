@@ -46,3 +46,48 @@
   color: white;
   text-align: center;
 }
+
+.NavBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+}
+
+.underHeading {
+  margin-top: 8%;
+}
+
+.masterContainer {
+  width: 100%;
+}
+
+.productTitle {
+  text-decoration: none;
+}
+
+.panelContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 5%;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+}
+
+.panelImg {
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+}
+
+.panelInfo {
+  width: 350px;
+  margin: 0 5% 0;
+  justify-content: center;
+}
