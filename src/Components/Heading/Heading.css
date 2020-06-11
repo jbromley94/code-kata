@@ -1,0 +1,13 @@
+.Title {
+  color: #ff0066;
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  font-size: 300%;
+  text-transform: uppercase;
+  line-height: 72px;
+  z-index: 1;  
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-color: #ff0066;
+}
