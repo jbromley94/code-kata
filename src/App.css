@@ -78,6 +78,11 @@
 
 .header {
   text-align: center;
+  margin-top: 290px;
+}
+
+.right {
+  float: right;
 }
 
 .panelImg {
@@ -90,4 +95,26 @@
   width: 350px;
   margin: 0 5% 0;
   justify-content: center;
+}
+
+.addRemove {
+  display: inline-flex;
+}
+
+.add {
+  margin-right: 10px;
+}
+
+.addButton {
+  background-color: green;
+  padding: 20px 35px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.removeButton {
+  background-color: red;
+  padding: 20px 35px;
+  font-size: 30px;
+  font-weight: bold;
 }
