@@ -73,9 +73,9 @@ class Items extends Component {
     let totalBs = 0;
     let totalCs = 0;
     let totalDs = 0;
+
     //loop to find how many letters have been added and let's get our discount on :D
     for (let i = 0; i < totalBasketList.length; i++) {
-      console.log(totalBasketList[i]);
       if (totalBasketList[i] === "A") {
         totalAs += 1;
       }
@@ -88,22 +88,42 @@ class Items extends Component {
       if (totalBasketList[i] === "D") {
         totalDs += 1;
       }
+
       // The above logic could be componetised and handed down further notifiers for add and remove to have effective
       // totalAs += 1 OR totalAs -=  but lets nmove onto the price logic and i'll call it a day
       let totalPriceForAs = totalAs * 50;
       let totalPriceForBs = totalBs * 30;
+
       //dont need to do C and D cos they are not eligble for the discount
       //lets calculate that there discount
       let howMuchDiscountForAs = Math.floor(totalAs / 3);
       let howMuchDiscountForBs = Math.floor(totalBs / 2);
-      if(howMuchDiscountForAs >= 1){
-        let RealTotalForPriceA = totalPriceForAs-(howMuchDiscountForAs*20)
+      let RealTotalForPriceA = 0;
+      let RealTotalForPriceB = 0;
+
+      // need an if n else, as sometimes the val for howMuchDiscX can be 0 and those wont transpose
+      // price over to realPrice
+      if (howMuchDiscountForAs >= 1) {
+        RealTotalForPriceA = totalPriceForAs - howMuchDiscountForAs * 20;
+      } else {
+        RealTotalForPriceA = totalPriceForAs;
       }
-      if(howMuchDiscountForBs >= 1){
-        let RealTotalForPriceA = totalPriceForAs-(howMuchDiscountForAs*20)
+      if (howMuchDiscountForBs >= 1) {
+        RealTotalForPriceB = totalPriceForBs - howMuchDiscountForBs * 15;
+      } else {
+        RealTotalForPriceB = totalPriceForBs;
       }
+
+      // Lets just get them values for the Cs n Ds and then add everything together
+      let totalPriceForCs = totalCs * 20;
+      let totalPriceForDs = totalDs * 15;
+
       //Okay i now have both of me new values that are the discount value. Woo I am having a break now as it is l8
-      
+      amendedPrice =
+        RealTotalForPriceA +
+        RealTotalForPriceB +
+        totalPriceForCs +
+        totalPriceForDs;
     }
 
     this.setState({
@@ -113,7 +133,7 @@ class Items extends Component {
       noItems: this.state.noItems + 1,
       //Add price to total price. This needs to be amended so that i
       //calculate current array and determine price due to names etc :(
-      totalPrice: this.state.totalPrice + price,
+      totalPrice: amendedPrice,
     });
   };
 
