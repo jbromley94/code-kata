@@ -6,9 +6,10 @@ class Items extends Component {
     basketCase: [],
     noItems: 0,
     totalPrice: 0,
+    objsInBask: {},
   };
   render() {
-    const { basketCase, noItems, totalPrice } = this.state;
+    const { basketCase, noItems, totalPrice, objsInBask } = this.state;
     return (
       <div className="header">
         <h1>Items For Sale</h1>
@@ -17,6 +18,7 @@ class Items extends Component {
           <div>{noItems}</div>
           <div>{basketCase}</div>
           <div>{totalPrice}</div>
+          <div>{JSON.stringify(objsInBask)}</div>
         </div>
         <div className="panelContainer">
           {itemsPanels.itemsPanels.map((item, index) => {
@@ -144,12 +146,77 @@ class Items extends Component {
     if (index >= 0) {
       totalBasketList.splice(index, 1);
     }
+    // Need this in case it isnt included in the array
+    if (index === -1) {
+      return alert("Sorry, that item is not in your basket to be removed");
+    }
 
+    //set value for price to set to state as we need to do some logic with how many lamps of a certain letter
+    // for discount purposes
+    let amendedPrice = 0;
+
+    //set values for the letters
+    let totalAs = 0;
+    let totalBs = 0;
+    let totalCs = 0;
+    let totalDs = 0;
+
+    //loop to find how many letters have been added and let's get our discount on :D
+    for (let i = 0; i < totalBasketList.length; i++) {
+      if (totalBasketList[i] === "A") {
+        totalAs += 1;
+      }
+      if (totalBasketList[i] === "B") {
+        totalBs += 1;
+      }
+      if (totalBasketList[i] === "C") {
+        totalCs += 1;
+      }
+      if (totalBasketList[i] === "D") {
+        totalDs += 1;
+      }
+
+      // The above logic could be componetised and handed down further notifiers for add and remove to have effective
+      // totalAs += 1 OR totalAs -=  but lets nmove onto the price logic and i'll call it a day
+      let totalPriceForAs = totalAs * 50;
+      let totalPriceForBs = totalBs * 30;
+
+      //dont need to do C and D cos they are not eligble for the discount
+      //lets calculate that there discount
+      let howMuchDiscountForAs = Math.floor(totalAs / 3);
+      let howMuchDiscountForBs = Math.floor(totalBs / 2);
+      let RealTotalForPriceA = 0;
+      let RealTotalForPriceB = 0;
+
+      // need an if n else, as sometimes the val for howMuchDiscX can be 0 and those wont transpose
+      // price over to realPrice
+      if (howMuchDiscountForAs >= 1) {
+        RealTotalForPriceA = totalPriceForAs - howMuchDiscountForAs * 20;
+      } else {
+        RealTotalForPriceA = totalPriceForAs;
+      }
+      if (howMuchDiscountForBs >= 1) {
+        RealTotalForPriceB = totalPriceForBs - howMuchDiscountForBs * 15;
+      } else {
+        RealTotalForPriceB = totalPriceForBs;
+      }
+
+      // Lets just get them values for the Cs n Ds and then add everything together
+      let totalPriceForCs = totalCs * 20;
+      let totalPriceForDs = totalDs * 15;
+
+      //Okay i now have both of me new values that are the discount value. Woo I am having a break now as it is l8
+      amendedPrice =
+        RealTotalForPriceA +
+        RealTotalForPriceB +
+        totalPriceForCs +
+        totalPriceForDs;
+    }
     if (this.state.noItems !== 0) {
       this.setState({
         basketCase: totalBasketList,
         noItems: this.state.noItems - 1,
-        totalPrice: this.state.totalPrice - price,
+        totalPrice: amendedPrice,
       });
     }
     //Alert message to user that you cannot have minus things
