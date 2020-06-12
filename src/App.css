@@ -136,4 +136,21 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  padding: 0px 20px 25px 20px;
+  text-decoration: underline;
+}
+
+.priceDivA {
+  margin-right: -150%;
+  margin-top: -25%;
+}
+
+.priceDivB {
+  margin-right: -140%;
+  margin-top: -7%;
+}
+
+.priceDivC {
+  margin-right: -140%;
+  margin-top: -6%;
 }
