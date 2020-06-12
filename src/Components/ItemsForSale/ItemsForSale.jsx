@@ -6,10 +6,9 @@ class Items extends Component {
     basketCase: [],
     noItems: 0,
     totalPrice: 0,
-    objsInBask: {},
   };
   render() {
-    const { basketCase, noItems, totalPrice, objsInBask } = this.state;
+    const { basketCase, noItems, totalPrice } = this.state;
     return (
       <div className="header">
         <h1>Items For Sale</h1>
@@ -17,6 +16,17 @@ class Items extends Component {
           <img src="https://img.icons8.com/material-rounded/24/000000/shopping-basket-2.png" />
           {/*The below with noItems, makes sure that the figure wont show if zero - seemed irrelevant to show it */}
           {noItems > 0 && <div className="noItems">{noItems}</div>}
+          {noItems === 0 && (
+            <div className="priceDivA">Total Price : {totalPrice} p</div>
+          )}
+
+          {/*Logic to swap between price ending in p or starting with £ sign*/}
+          {noItems > 0 && totalPrice < 100 && (
+            <div className="priceDivB">Total Price : {totalPrice} p</div>
+          )}
+          {noItems > 0 && totalPrice >= 100 && (
+            <div className="priceDivC">Total Price : £{(totalPrice / 100).toFixed(2)}</div>
+          )}
           <div className="dropdown-content-left">
             {basketCase.map((lampType, index) => {
               return (
@@ -25,8 +35,6 @@ class Items extends Component {
                 </div>
               );
             })}
-            <div>Total Price : {totalPrice} p</div>
-            <div>{JSON.stringify(objsInBask)}</div>
           </div>
         </div>
         <div className="panelContainer">
