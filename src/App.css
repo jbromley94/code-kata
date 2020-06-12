@@ -56,10 +56,6 @@
   height: 50px;
 }
 
-.underHeading {
-  margin-top: 8%;
-}
-
 .masterContainer {
   width: 100%;
 }
@@ -78,11 +74,11 @@
 
 .header {
   text-align: center;
-  margin-top: 290px;
+  margin-top: 6%;
 }
 
-.right {
-  float: right;
+.left {
+  float: left;
 }
 
 .panelImg {
@@ -117,4 +113,44 @@
   padding: 20px 35px;
   font-size: 30px;
   font-weight: bold;
+}
+
+.noItems {
+  color: red;
+  margin-top: -40px;
+  margin-left: 25px;
+}
+
+.basketItems {
+  margin-top: 20px;
+}
+
+.dropdown:hover .dropdown-content-left {
+  display: block;
+}
+
+.dropdown-content-left {
+  display: none;
+  position: absolute;
+  font-family: "Playfair Display", serif;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 0px 20px 25px 20px;
+  text-decoration: underline;
+}
+
+.priceDivA {
+  margin-right: -150%;
+  margin-top: -25%;
+}
+
+.priceDivB {
+  margin-right: -140%;
+  margin-top: -7%;
+}
+
+.priceDivC {
+  margin-right: -140%;
+  margin-top: -6%;
 }
