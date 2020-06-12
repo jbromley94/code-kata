@@ -9,8 +9,13 @@ class FixdNavbar extends Component {
         <div className="left dropdown">
           <button className="dropbtn">Content</button>
           <div className="dropdown-content-left">
-            <Link to="/">Home</Link>
-            <Link to="/vacancies">Vacancies</Link>
+            <Link to="/">Shop</Link>
+            <Link to="/cart">My cart</Link>
+          </div>
+          <div className="right">
+            <Link to="/cart">
+              <i className="material-icons">shopping_cart</i>
+            </Link>
           </div>
         </div>
       </div>
