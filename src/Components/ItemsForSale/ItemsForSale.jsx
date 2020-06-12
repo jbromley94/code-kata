@@ -13,8 +13,29 @@ class Items extends Component {
       <div className="header">
         <h1>Items For Sale</h1>
         <div className="left dropdown">
-          <img src="https://img.icons8.com/material-rounded/24/000000/shopping-basket-2.png" />
-          {/*The below with noItems, makes sure that the figure wont show if zero - seemed irrelevant to show it */}
+          {noItems === 0 && (
+            <img
+              alt="basketForBoughtItems"
+              src="https://img.icons8.com/material-rounded/24/000000/shopping-basket-2.png"
+            />
+          )}
+          {noItems > 0 && totalPrice < 100 && (
+            <img
+              alt="basketForBoughtItems"
+              className="basketImgB"
+              src="https://img.icons8.com/material-rounded/24/000000/shopping-basket-2.png"
+            />
+          )}
+          {noItems > 0 && totalPrice >= 100 && (
+            <img
+              alt="basketForBoughtItems"
+              className="basketImgC"
+              src="https://img.icons8.com/material-rounded/24/000000/shopping-basket-2.png"
+            />
+          )}
+
+          {/*The below with noItems, makes sure that the figure wont show if zero 
+          - seemed irrelevant to show it */}
           {noItems > 0 && <div className="noItems">{noItems}</div>}
           {noItems === 0 && (
             <div className="priceDivA">Total Price : {totalPrice} p</div>
@@ -25,13 +46,34 @@ class Items extends Component {
             <div className="priceDivB">Total Price : {totalPrice} p</div>
           )}
           {noItems > 0 && totalPrice >= 100 && (
-            <div className="priceDivC">Total Price : £{(totalPrice / 100).toFixed(2)}</div>
+            <div className="priceDivC">
+              Total Price : £{(totalPrice / 100).toFixed(2)}
+            </div>
           )}
           <div className="dropdown-content-left">
             {basketCase.map((lampType, index) => {
               return (
                 <div className="basketItems">
-                  Letter {lampType} Lamp added to basket
+                  {lampType === "A" && (
+                    <p>
+                      <span>Letter {lampType} Lamp added to basket</span> - 40p
+                    </p>
+                  )}
+                  {lampType === "B" && (
+                    <p>
+                      <span>Letter {lampType} Lamp added to basket</span> - 30p
+                    </p>
+                  )}
+                  {lampType === "C" && (
+                    <p>
+                      <span>Letter {lampType} Lamp added to basket</span> - 20p
+                    </p>
+                  )}
+                  {lampType === "D" && (
+                    <p>
+                      <span>Letter {lampType} Lamp added to basket</span> - 15p
+                    </p>
+                  )}
                 </div>
               );
             })}
@@ -83,8 +125,8 @@ class Items extends Component {
     let totalBasketList = this.state.basketCase;
     totalBasketList.push(product_name);
 
-    //set value for price to set to state as we need to do some logic with how many lamps of a certain letter
-    // for discount purposes
+    //set value for price to set to state as we need to do some logic with how many lamps
+    //of a certain letter for discount purposes
     let amendedPrice = 0;
 
     //set values for the letters
@@ -165,7 +207,7 @@ class Items extends Component {
     }
     // Need this in case it isnt included in the array
     if (index === -1) {
-      return alert("Sorry, that item is not in your basket to be removed");
+      return alert("Sorry, that item is not present in your basket to be removed");
     }
 
     //set value for price to set to state as we need to do some logic with how many lamps of a certain letter
