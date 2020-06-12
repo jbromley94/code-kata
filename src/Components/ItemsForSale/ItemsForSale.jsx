@@ -13,12 +13,21 @@ class Items extends Component {
     return (
       <div className="header">
         <h1>Items For Sale</h1>
-        <div className="right">
-          Basket
-          <div>{noItems}</div>
-          <div>{basketCase}</div>
-          <div>{totalPrice}</div>
-          <div>{JSON.stringify(objsInBask)}</div>
+        <div className="left dropdown">
+          <img src="https://img.icons8.com/material-rounded/24/000000/shopping-basket-2.png" />
+          {/*The below with noItems, makes sure that the figure wont show if zero - seemed irrelevant to show it */}
+          {noItems > 0 && <div className="noItems">{noItems}</div>}
+          <div className="dropdown-content-left">
+            {basketCase.map((lampType, index) => {
+              return (
+                <div className="basketItems">
+                  Letter {lampType} Lamp added to basket
+                </div>
+              );
+            })}
+            <div>Total Price : {totalPrice} p</div>
+            <div>{JSON.stringify(objsInBask)}</div>
+          </div>
         </div>
         <div className="panelContainer">
           {itemsPanels.itemsPanels.map((item, index) => {

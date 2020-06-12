@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Heading.css";
-import NavBar from "../Navbar/NavbarFloat";
 import { Link } from "react-router-dom";
 
 class Heading extends Component {
@@ -11,7 +10,6 @@ class Heading extends Component {
           {" "}
           <button className="Title">Letters Super Store</button>
         </Link>
-        <NavBar />
       </div>
     );
   }
