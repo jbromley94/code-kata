@@ -11,8 +11,9 @@ class App extends Component {
       <div className="masterContainer">
         <header className="App">
           <Heading />
-        </header>
-        <div className="underHeading"></div>
+        </header>        
+        {/* With a switch, we can future proof the routing :D  - 
+        i may want /home or /checkout routes in the future*/}
         <Switch>
           <Route path="/" component={ItemsForSale} />
         </Switch>
